@@ -1,0 +1,116 @@
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: #444444;
+    color: white;
+    padding: 20px;
+    transition: left;
+    box-shadow: 0 0 10px 0 rgb(0, 0, 0), 0 0 10px 8px rgba(0, 0, 0, 0.191);
+  }
+  
+  .sidebar.closed {
+    margin-right: 500px;
+    opacity: 0;
+    transition: opacity 0.2s ease; /* When sidebar is closed, shrink to 60px */
+  }
+  
+  .sidebar.open {
+    transition: left 0.5s ease;
+    width: 225px; /* Sidebar open width */
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .sidebar ul li {
+    margin: 50px 0;
+    background-color: rgb(170, 197, 39);
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .sidebar ul li:hover {
+    background-color: rgb(160, 185, 35);
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    display: block;
+    transition: 0.3s ease;
+  }
+  
+  .sidebar ul li a:hover {
+    color: black;
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  .sidebar ul li + #userButton {
+    background-color: rgb(0, 144, 192);
+  }
+  
+  /* Toggle button styling */
+  .toggle-btn {
+    display: block;
+    align-self: center;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(232, 0, 0);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 3em;
+  }
+
+  .toggle-btn:hover {
+    background-color: rgb(179, 0, 0);
+    color: rgb(219, 219, 219);
+  }
+  
+  /* Content section */
+  .app {
+    display: flex;
+  }
+  
+  .content {
+    margin-left: 250px;
+    padding: 20px;
+    flex-grow: 1;
+  }
+
+  .openMenu {
+    display: block;
+    margin: -53em;
+    margin-left: 275px;
+    height: 12vh;
+  }
+
+  .openMenuButton {
+    display: block;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    height: 3em;
+    margin-top: 2em;
+    margin-right: 1em;
+    background-color: #323232;
+  }
+  
+  .openMenuButton:hover {
+    background-color: #606060;
+  }
