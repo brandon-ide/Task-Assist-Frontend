@@ -7,18 +7,16 @@
     background-color: #444444;
     color: white;
     padding: 20px;
-    transition: left;
     box-shadow: 0 0 10px 0 rgb(0, 0, 0), 0 0 10px 8px rgba(0, 0, 0, 0.191);
   }
   
   .sidebar.closed {
     margin-right: 500px;
-    opacity: 0;
-    transition: opacity 0.2s ease; /* When sidebar is closed, shrink to 60px */
+    opacity: 0%;
   }
   
   .sidebar.open {
-    transition: left 0.5s ease;
+    transition: 0.15s ease;
     width: 225px; /* Sidebar open width */
   }
   

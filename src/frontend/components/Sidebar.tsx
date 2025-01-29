@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Sidebar.css';  // Make sure the CSS file is updated accordingly
 
 const Sidebar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(true); // Track the sidebar state
+  const [isOpen, setIsOpen] = useState(false); // Track the sidebar state
 
   const toggleSidebar = () => {
     setIsOpen(prevState => !prevState); // Toggle sidebar visibility
@@ -20,22 +20,22 @@ const Sidebar: React.FC = () => {
         </button>
         <ul>
           <li>
-            <Link to="/viewdeletedtasks">View Deleted Tasks</Link>
+            <Link to="/viewdeletedtasks" onClick={toggleSidebar}>View Deleted Tasks</Link>
           </li>
           <li>
-            <Link to="/viewprivatetasks">View Private Tasks</Link>
+            <Link to="/viewprivatetasks" onClick={toggleSidebar}>View Private Tasks</Link>
           </li>
           <li>
-            <Link to="/deletetask">Delete A Task</Link>
+            <Link to="/deletetask" onClick={toggleSidebar}>Delete A Task</Link>
           </li>
           <li>
-            <Link to="/updatetask">Update A Task</Link>
+            <Link to="/updatetask" onClick={toggleSidebar}>Update A Task</Link>
           </li>
           <li>
-            <Link to="/addtask">Add A Task</Link>
+            <Link to="/addtask" onClick={toggleSidebar}>Add A Task</Link>
           </li>
           <li id="userButton">
-            <Link to="/userprofile" id="userButton">User Profile</Link>
+            <Link to="/userprofile" id="userButton" onClick={toggleSidebar}>User Profile</Link>
           </li>
         </ul>
       </div>
