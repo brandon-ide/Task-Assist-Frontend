@@ -39,13 +39,11 @@ const DisplayTasks: React.FC = () => {
               key={task._id}
               className={`taskItem ${task.taskPriority.toLowerCase()}`}>
               <h3>{task.taskName}</h3>
-              <p>Category: {task.taskCategory}</p>
               <p>
-                Priority: <strong>{task.taskPriority}</strong>
+                Category: <strong>{task.taskCategory}</strong> <strong> - </strong> 
+                Priority: <strong>{task.taskPriority}</strong> <strong> - </strong> 
+                Due: {task.dueDate && new Date(task.dueDate).toLocaleDateString()}
               </p>
-              {task.dueDate && (
-                <p>Due: {new Date(task.dueDate).toLocaleDateString()}</p>
-              )}
             </li>
           ))}
         </ul>
