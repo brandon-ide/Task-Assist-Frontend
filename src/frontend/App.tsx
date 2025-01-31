@@ -23,7 +23,7 @@ const App: React.FC = () => {
         <Sidebar />
         <main className="content">
           <Routes>
-            <Route path="/" element={<DisplayTasks />} />
+            <Route path="/tasks" element={<DisplayTasks />} />
             <Route path="/addtask" element={<AddATask />} />
             <Route path="/deletetask" element={<DeleteATask />} />
             <Route path="/updatetask" element={<UpdateATask />} />

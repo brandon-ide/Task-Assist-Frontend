@@ -1,3 +1,5 @@
+@media only screen and (min-width: 320px) {
+
 .sidebar {
   position: fixed;
   top: 60px; /* below header */
@@ -7,13 +9,13 @@
   background-color: var(--primary-color);
   color: white;
   padding: 20px;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
+  transform: translateX(200%);
+  transition: transform 0.2s ease-in-out;
   z-index: 998;
 }
 
 .sidebar.open {
-  transform: translateX(0);
+  transform: translateX(70%);
 }
 
 .sidebar ul {
@@ -22,9 +24,16 @@
 }
 
 .sidebar ul li {
-  margin: 15px 0;
+  margin: 30px 0;
+  width: 200px;
+  padding: 10px;
+  border-radius: 5px;
   font-weight: bold;
   text-align: left;
+}
+
+.sidebar ul li:hover {
+  background-color: rgba(255, 255, 255, 0.22);
 }
 
 .sidebar ul li a {
@@ -38,23 +47,10 @@
   color: #f0f0f0;
 }
 
-/* Close button inside sidebar */
-.toggle-btn {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 28px;
-  font-weight: bold;
-  float: right;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-/* Hamburger button */
 .openMenuButton {
   position: fixed;
-  top: 55px; /* Move it further down from the header */
-  left: 30px; /* More space between sidebar and button */
+  bottom: 55px; /* Move it further down from the header */
+  right: 55px; /* More space between sidebar and button */
   background-color: #10b981; /* A nice green from Tailwind palette, for example */
   color: #ffffff;
   border: none;
@@ -67,4 +63,74 @@
 }
 .openMenuButton:hover {
   background-color: #0a9d68; /* Darker shade on hover */
+}
+
+}
+
+@media only screen and (min-width: 360px) {
+
+.sidebar.open {
+  transform: translateX(60%);
+}
+  
+}
+
+@media only screen and (min-width: 375px) {
+
+.sidebar.open {
+  transform: translateX(60%);
+}
+
+.sidebar ul li {
+  margin: 25px 0;
+  font-weight: bold;
+  text-align: left;
+}
+    
+}
+
+@media only screen and (min-width: 409px) {
+
+.sidebar.open {
+  transform: translateX(80%);
+}
+
+}
+
+@media only screen and (min-width: 435px) {
+
+.sidebar {
+  width: 65vw;
+}
+    
+}
+
+@media only screen and (min-width: 768px) {
+
+.sidebar {
+  width: 90vw;
+}
+  
+}
+
+@media only screen and (min-width: 1024px) {
+
+.openMenuButton {
+  bottom: 25px; /* Move it further down from the header */
+  right: 75px; /* More space between sidebar and button */
+}
+    
+}
+
+@media only screen and (min-width: 1024px) {
+
+.openMenuButton {
+  bottom: 75px; /* Move it further down from the header */
+  right: 115px; /* More space between sidebar and button */
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
 }

@@ -9,18 +9,15 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
-      {/* Hamburger Button */}
+      {/* Open Menu Button */}
       <button className="openMenuButton" onClick={toggleSidebar}>
-        {isOpen ? "Close Menu" : "☰ Open Menu"}
+        {isOpen ? "Close Menu" : "Open Menu"}
       </button>
 
       <nav className={`sidebar ${isOpen ? "open" : "closed"}`}>
-        <button className="toggle-btn" onClick={toggleSidebar}>
-          &times;
-        </button>
         <ul>
           <li>
-            <Link to="/" onClick={toggleSidebar}>
+            <Link to="/tasks" onClick={toggleSidebar}>
               View Tasks
             </Link>
           </li>
