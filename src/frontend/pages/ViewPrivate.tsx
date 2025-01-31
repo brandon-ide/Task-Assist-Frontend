@@ -1,8 +1,14 @@
-import React from 'react';
+import React from "react";
+import "./ViewPrivate.css";
 
 const ViewPrivate: React.FC = () => {
   return (
-    null
+    <div className="privateTasksContainer">
+      <h2>View Private Tasks</h2>
+      <p>
+        Here you can display your private tasks (if your backend supports them).
+      </p>
+    </div>
   );
 };
 
