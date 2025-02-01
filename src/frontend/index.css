@@ -1,6 +1,6 @@
 :root {
   /* Base Colors */
-  --primary-color: #3b82f6; /* Vibrant blue */
+  --primary-color: #3682ae; /* Muted blue */
   --secondary-color: #10b981; /* Soft green */
   --danger-color: #ef4444; /* Red for warnings/errors */
   --text-color: #333;
@@ -8,6 +8,11 @@
 
   /* Font Sizing / Families */
   --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: white;
 }
 
 html,

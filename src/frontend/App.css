@@ -18,17 +18,33 @@
   color: white;
   display: flex;
   align-items: center;
-  padding: 10px 20px;
+  padding: 5px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 999; /* Ensures it stays on top */
 }
 
 .global-header img {
-  height: 50px;
+  height: 70px;
   margin-right: 10px;
 }
 
 .global-header h1 {
   font-size: 24px;
   margin: 0;
+}
+
+#darkModeToggle {
+  position: fixed;
+  right: 55px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+#darkModeToggle:hover {
+  background-color: #333;
+  color: white;
+  transition: 0.2s ease;
 }

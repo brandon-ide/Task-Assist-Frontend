@@ -1,53 +1,37 @@
-.updateTaskContainer {
-  background: white;
-  padding: 25px;
-  max-width: 500px;
-  margin: auto;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+#taskInput {
+  width: 250px;
 }
 
-.updateTaskContainer h2 {
-  margin-bottom: 15px;
+#pencil {
+  margin-left: 10px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  border: solid black .25px;
+  border-radius: 50%;
 }
 
-.updateTaskContainer form {
-  display: flex;
-  flex-direction: column;
+#pencil:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.updateTaskContainer label {
-  text-align: left;
-  margin-top: 10px;
-  font-weight: 600;
-}
-
-.updateTaskContainer input,
-.updateTaskContainer select {
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.updateTaskContainer button {
-  margin-top: 20px;
-  padding: 12px;
+.saveButton {
+  background-color: #10b981;
   border: none;
-  background-color: #aac527; /* Purple */
+  padding: 10px;
+  border-radius: 5px;
   color: white;
-  border-radius: 4px;
-  font-size: 16px;
+  margin-top: 5px;
+  margin-left: 150px;
   cursor: pointer;
 }
 
-.updateTaskContainer button:hover {
-  background-color: #8aa522;
-}
-
-.feedback {
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: var(--secondary-color);
+.cancelButton {
+  background-color: red;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  margin-left: 20px;
+  cursor: pointer;
 }
