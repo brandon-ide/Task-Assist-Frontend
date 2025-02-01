@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./AddATask.css";
-import "../App.css";
+import './DisplayTasks.css'
 
 const TaskDeleteForm: React.FC = () => {
   const [taskName, setTaskName] = useState<string>("");
