@@ -1,8 +1,71 @@
+/* File: ViewPrivate.css */
+
+/* ----- Light (Default) Mode Styles ----- */
+
 .privateTasksContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 25px;
   max-width: 600px;
-  margin: auto;
-  border-radius: 8px;
+  margin: 80px auto;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.privateTasksContainer h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333; /* heading color in light mode */
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional paragraph or text styling */
+.privateTasksContainer p {
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Optional error/success messages if needed */
+.errorMessage,
+.successMessage {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.errorMessage {
+  color: red;
+}
+.successMessage {
+  color: green;
+}
+
+/* ----- Dark Mode Overrides ----- */
+/* Activated when a parent container has .dark-mode */
+
+.dark-mode .privateTasksContainer {
+  background: #1f1f1f;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+.dark-mode .privateTasksContainer h2 {
+  color: #f0f0f0;
+}
+
+.dark-mode .privateTasksContainer p {
+  color: #ccc;
+}
+
+.dark-mode .errorMessage {
+  color: #ff9b9b;
+}
+
+.dark-mode .successMessage {
+  color: #90ee90;
 }

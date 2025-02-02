@@ -1,27 +1,34 @@
+/* File: index.css */
+
+/* Root Variables for colors, fonts, etc. */
 :root {
-  /* Base Colors */
   --primary-color: #3682ae; /* Muted blue */
   --secondary-color: #10b981; /* Soft green */
   --danger-color: #ef4444; /* Red for warnings/errors */
   --text-color: #333;
   --bg-color: #f9fafb;
 
-  /* Font Sizing / Families */
   --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.dark-mode {
-  background-color: #333;
-  color: white;
-  transition: 0.2s ease;
-}
-
+/* Light vs. Dark Mode classes 
+   Toggled typically in your <App> with: 
+   <div className={isDarkMode ? "dark-mode" : "light-mode"}>
+*/
 .light-mode {
-  background-color: white;
-  color: #333;
+  background-color: #f9fafb;
+  color: var(--text-color);
   transition: 0.2s ease;
 }
 
+.dark-mode {
+  background: linear-gradient(135deg, #613138, #382836);
+
+  color: #fff;
+  transition: 0.2s ease;
+}
+
+/* Global resets */
 html,
 body {
   margin: 0;

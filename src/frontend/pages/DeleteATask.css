@@ -1,95 +1,321 @@
-  .deleteTaskContainer {
-   display: flex;
-   justify-content: center;
-   margin: 40px auto;
-   padding: 20px;
-   max-width: 600px;
-   border-radius: 10px;
-   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-   flex-direction: column;
-   align-items: center;
-  }
-  
-  .deleteTaskContainer h2 {
-    margin-bottom: 15px;
-  }
-  
-  .deleteTaskContainer form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .deleteTaskContainer label {
-    text-align: left;
-    margin-top: 10px;
-    font-weight: 600;
-  }
-  
-  .deleteTaskContainer input {
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  .deleteTaskContainer button {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    background-color: var(--danger-color);
-    color: white;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .deleteTaskContainer button:hover {
-    background-color: #dc2626;
-  }
-  
-  .feedback {
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: var(--secondary-color);
-  }
+/* File: DeleteATask.css */
 
-  /* Add this to your DeleteATask.css */
+/* -------------------- Global Variables -------------------- */
+:root {
+  --color-light-bg: #ffffff;
+  --color-light-text: #333333;
+  --color-light-border: #e0e0e0;
+  --color-light-secondary-bg: #fafafa;
 
+  --color-dark-bg: #1f1f1f;
+  --color-dark-text: #f0f0f0;
+  --color-dark-border: #555555;
+  --color-dark-secondary-bg: #2a2a2a;
+
+  /* Sharp priority colors */
+  --priority-high: #e74c3c; /* strong red */
+  --priority-medium: #f1c40f; /* bold yellow */
+  --priority-low: #2ecc71; /* vivid green */
+
+  --transition-default: 0.3s;
+}
+
+/* -------------------- Light Mode Styles -------------------- */
+
+/* Main container */
+.deleteTaskContainer {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 600px;
+  border-radius: 10px;
+  background: var(--color-light-bg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  align-items: center;
+}
+
+.deleteTaskContainer h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--color-light-text);
+}
+
+/* Form styles (if applicable) */
+.deleteTaskContainer form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.deleteTaskContainer label {
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--color-light-text);
+}
+
+.deleteTaskContainer input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 5px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid var(--color-light-border);
+  color: var(--color-light-text);
+  background-color: var(--color-light-bg);
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.deleteTaskContainer input:focus {
+  border: 1px solid #3682ae;
+  box-shadow: 0 0 0 3px rgba(54, 130, 174, 0.25);
+}
+
+/* Delete button */
+.deleteTaskContainer button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.deleteTaskContainer button:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(239, 68, 68, 0.4);
+}
+
+.deleteTaskContainer button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.2);
+}
+
+/* Feedback messages */
+.errorMessage,
+.successMessage {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.errorMessage {
+  color: var(--color-error);
+}
+
+.successMessage {
+  color: var(--color-success);
+}
+
+/* Task List container */
+.taskListContainer {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 600px;
+  border-radius: 10px;
+  background: var(--color-light-bg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  align-items: center;
+}
+
+.taskListContainer h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--color-light-text);
+}
+
+/* Individual task items */
 .taskItem {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .taskItem.hovered {
-    background-color: rgb(206, 0, 0);
-    color: white;
-  }
-  
-  .taskItem:hover {
-    cursor: pointer;
-  }
-  
-  .taskItem h3 {
-    margin: 0;
-  }
-  
-  .taskItem p {
-    margin: 5px 0;
-  }
-  
-  .errorMessage, .successMessage {
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
-  .errorMessage {
-    color: red;
-  }
-  
-  .successMessage {
-    color: green;
-  }
-  
+  padding: 12px 14px;
+  margin: 10px 0;
+  border: 1px solid var(--color-light-border);
+  border-left-width: 5px; /* Priority color indicator */
+  border-radius: 6px;
+  background-color: var(--color-light-secondary-bg);
+  transition: background-color 0.3s ease, transform 0.3s, box-shadow 0.3s;
+}
+
+.taskItem:hover {
+  cursor: pointer;
+  transform: translateY(-1px);
+}
+
+/* Enhanced hovered state */
+.taskItem.hovered {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  color: #fff;
+  box-shadow: 0 5px 12px rgba(239, 68, 68, 0.3);
+  transform: translateY(-2px);
+}
+
+.taskItem h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: var(--color-light-text);
+  transition: color 0.3s ease;
+}
+
+.taskItem p {
+  margin: 5px 0;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+/* Ensure text in hovered state remains white */
+.taskItem.hovered h3,
+.taskItem.hovered p {
+  color: #fff !important;
+}
+
+/* Priority-based color indicators (light mode) */
+.high {
+  border-left-color: var(--priority-high);
+}
+.medium {
+  border-left-color: var(--priority-medium);
+}
+.low {
+  border-left-color: var(--priority-low);
+}
+
+/* Wrap the priority text in a span for coloring */
+.priority-label {
+  color: inherit;
+  font-weight: bold;
+}
+
+/* -------------------- Dark Mode Overrides -------------------- */
+.dark-mode .deleteTaskContainer {
+  background: var(--color-dark-bg);
+  color: var(--color-dark-text);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.07);
+}
+
+.dark-mode .deleteTaskContainer h2 {
+  color: #f0f0f0;
+}
+
+.dark-mode .deleteTaskContainer label {
+  color: #f0f0f0;
+}
+
+.dark-mode .deleteTaskContainer input {
+  background-color: #2c2c2c;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.dark-mode .deleteTaskContainer input:focus {
+  border: 1px solid #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+}
+
+/* Dark mode delete button */
+.dark-mode .deleteTaskContainer button {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+  color: #fff;
+}
+.dark-mode .deleteTaskContainer button:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(239, 68, 68, 0.4);
+}
+.dark-mode .deleteTaskContainer button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.2);
+}
+
+/* Dark mode container */
+.dark-mode .taskListContainer {
+  background: var(--color-dark-bg);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.07);
+}
+
+.dark-mode .taskListContainer h2 {
+  color: #f0f0f0;
+}
+
+.dark-mode .taskItem {
+  background-color: var(--color-dark-secondary-bg);
+  border: 1px solid #555;
+  /* Ensure left border width is maintained in dark mode */
+  border-left: 5px solid !important;
+  color: #ddd;
+}
+
+.dark-mode .taskItem:hover {
+  transform: translateY(-1px);
+}
+
+.dark-mode .taskItem h3 {
+  color: #fff;
+}
+
+.dark-mode .taskItem p {
+  color: #ccc;
+}
+
+/* Dark mode hovered/selected state */
+.dark-mode .taskItem.hovered {
+  background: linear-gradient(135deg, #b91c1c, #991b1b);
+  color: #fff;
+  box-shadow: 0 5px 12px rgba(185, 28, 28, 0.3);
+  transform: translateY(-2px);
+}
+
+.dark-mode .taskItem.hovered h3,
+.dark-mode .taskItem.hovered p {
+  color: #fff !important;
+}
+
+/* Dark mode Priority Colors – more specific selectors with !important */
+.dark-mode .taskItem.high {
+  border-left: 5px solid var(--priority-high) !important;
+}
+.dark-mode .taskItem.medium {
+  border-left: 5px solid var(--priority-medium) !important;
+}
+.dark-mode .taskItem.low {
+  border-left: 5px solid var(--priority-low) !important;
+}
+
+/* Also, style priority labels in dark mode */
+.dark-mode .taskItem.high .priority-label {
+  color: var(--priority-high);
+}
+.dark-mode .taskItem.medium .priority-label {
+  color: var(--priority-medium);
+}
+.dark-mode .taskItem.low .priority-label {
+  color: var(--priority-low);
+}
+
+/* -------------------- Modal Styles -------------------- */
+.dark-mode .modalContent {
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.08);
+  color: #eee;
+}
+.dark-mode .closeButton {
+  color: #eee;
+}
+.dark-mode .closeButton:hover {
+  color: #ff9b9b;
+}
+.dark-mode .modalContent label {
+  color: #ccc;
+}
+.dark-mode .modalContent h3 {
+  color: #ccc;
+}

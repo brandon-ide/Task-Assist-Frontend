@@ -1,3 +1,6 @@
+/* File: App.css */
+
+/* Structure for your main layout */
 .app {
   display: flex;
   min-height: 100vh;
@@ -6,15 +9,16 @@
 .content {
   flex: 1;
   padding: 20px;
-  margin-top: 80px; /* to allow space for header if needed */
+  margin-top: 80px; /* space for fixed header if needed */
 }
 
-/* Optional Global Header (if needed) */
+/* Global Header (Navbar) */
 .global-header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
+  background: linear-gradient(135deg, #3682ae 0%, #10b981 100%);
   color: white;
   display: flex;
   align-items: center;
@@ -25,6 +29,7 @@
 
 .global-header img {
   height: 70px;
+  width: 100px;
   margin-right: 10px;
 }
 
@@ -33,18 +38,34 @@
   margin: 0;
 }
 
+/* Dark Mode override for the global header */
+.dark-mode .global-header {
+  /* Black gradient for dark mode (modify as you wish) */
+  /* background: linear-gradient(135deg, #0b0b0b, #2c2c2c); */
+  background: linear-gradient(135deg, #e96074, #382836);
+
+  color: #fff;
+}
+
+/* Dark Mode Toggle Button */
 #darkModeToggle {
   position: fixed;
-  right: 55px;
+  right: 15px;
   font-weight: bold;
   border: none;
   border-radius: 5px;
   padding: 5px;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 #darkModeToggle:hover {
   background-color: #333;
   color: white;
-  transition: 0.2s ease;
+}
+
+/* If you want a different style in dark mode for the toggle */
+.dark-mode #darkModeToggle {
+  background-color: #444;
+  color: #fff;
 }

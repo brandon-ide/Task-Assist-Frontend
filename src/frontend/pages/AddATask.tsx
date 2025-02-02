@@ -1,5 +1,3 @@
-// File: AddATask.tsx
-
 import React, { useState } from "react";
 import axios from "axios";
 import "./AddATask.css";
@@ -22,6 +20,7 @@ const AddATask: React.FC = () => {
     }
 
     try {
+      // Build the new task object
       const newTask = {
         taskName,
         dateOfEntry: new Date(),
@@ -30,10 +29,10 @@ const AddATask: React.FC = () => {
         dueDate: dueDate ? new Date(dueDate) : undefined,
       };
 
-      // POST the new task to the API
+      // POST the new task to your API
       await axios.post("http://localhost:3000/tasks", newTask);
 
-      // Reset the form if the task is successfully added
+      // Reset form on success
       setTaskName("");
       setTaskCategory("");
       setTaskPriority("Low");
@@ -52,8 +51,11 @@ const AddATask: React.FC = () => {
   return (
     <div className="addTaskContainer">
       <h2>Add New Task</h2>
+
+      {/* Display error or success messages */}
       {errorMessage && <p className="errorMessage">{errorMessage}</p>}
       {successMessage && <p className="successMessage">{successMessage}</p>}
+
       <form onSubmit={handleSubmit}>
         <div className="addTaskForm">
           <label htmlFor="taskName">Task Name:</label>
@@ -73,9 +75,9 @@ const AddATask: React.FC = () => {
             onChange={(e) => setTaskCategory(e.target.value)}
             required>
             <option value="">--Select--</option>
-            <option value="Work">Work</option>
-            <option value="Personal">Personal</option>
-            <option value="Private">Private</option>
+            <option value="pork">Work</option>
+            <option value="personal">Personal</option>
+            <option value="private">Private</option>
           </select>
 
           <label htmlFor="taskPriority">Task Priority:</label>

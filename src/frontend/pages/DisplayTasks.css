@@ -1,15 +1,351 @@
-.taskListContainer {
-  display: flex;
-  justify-content: center;
-  margin: 40px auto;
-  padding: 20px;
-  max-width: 600px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  align-items: center;
+/* File: DisplayTasks.css */
+
+/* 
+  Using CSS variables to manage colors for light and dark modes,
+  a custom font, smooth transitions, and subtle enhancements.
+*/
+:root {
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  --color-light-bg: #ffffff;
+  --color-light-text: #333333;
+  --color-light-border: #e0e0e0;
+  --color-light-secondary-bg: #fafafa;
+
+  --color-dark-bg: #1f1f1f;
+  --color-dark-text: #f0f0f0;
+  --color-dark-border: #555555;
+  --color-dark-secondary-bg: #2a2a2a;
+
+  --color-error: #ff0000;
+  --color-success: #008000;
+  --color-error-dark: #ff9b9b;
+  --color-success-dark: #90ee90;
+
+  --transition-default: 0.3s;
+  --box-shadow-light: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --box-shadow-dark: 0 4px 10px rgba(255, 255, 255, 0.07);
+
+  /* Updated sharp priority colors */
+  --priority-high: #e74c3c; /* strong red */
+  --priority-medium: #f1c40f; /* bold yellow */
+  --priority-low: #2ecc71; /* vivid green */
 }
 
-h2 {
+body {
+  font-family: var(--font-family);
+}
+
+/* ----- Light (Default) Mode Styles ----- */
+.taskListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+  padding: 30px;
+  max-width: 700px;
+  border-radius: 12px;
+  background-color: var(--color-light-bg);
+  box-shadow: var(--box-shadow-light);
+  transition: background-color var(--transition-default),
+    box-shadow var(--transition-default);
+}
+
+.taskListContainer h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
   text-align: center;
+  color: var(--color-light-text);
+  font-weight: 600;
+  transition: color var(--transition-default);
+}
+
+.taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* Individual task items */
+.taskItem {
+  position: relative;
+  padding: 16px 18px;
+  margin: 14px 0;
+  border: 1px solid var(--color-light-border);
+  border-left-width: 6px; /* For priority color indication */
+  border-radius: 10px;
+  background-color: var(--color-light-secondary-bg);
+  transition: background-color var(--transition-default),
+    transform var(--transition-default), box-shadow var(--transition-default);
+}
+
+.taskItem:hover {
+  cursor: pointer;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.taskItem h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: var(--color-light-text);
+  font-weight: 500;
+  transition: color var(--transition-default);
+}
+
+.taskItem p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #555;
+  transition: color var(--transition-default);
+}
+
+/* Priority-based color indicators for light mode */
+/* More specific selectors ensure the left border is applied */
+.taskItem.high {
+  border-left: 6px solid var(--priority-high);
+}
+.taskItem.medium {
+  border-left: 6px solid var(--priority-medium);
+}
+.taskItem.low {
+  border-left: 6px solid var(--priority-low);
+}
+
+/* Also color the priority label within list items */
+.taskItem.high .priority-label {
+  color: var(--priority-high);
+}
+.taskItem.medium .priority-label {
+  color: var(--priority-medium);
+}
+.taskItem.low .priority-label {
+  color: var(--priority-low);
+}
+
+/* Loading message */
+.loading {
+  font-style: italic;
+  color: #555;
+}
+
+/* Error/Success messages */
+.errorMessage,
+.successMessage {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.errorMessage {
+  color: var(--color-error);
+}
+
+.successMessage {
+  color: var(--color-success);
+}
+
+/* ----- Modal Styles ----- */
+
+/* Modal overlay covers the entire screen */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  animation: fadeIn var(--transition-default) forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal content container.
+   This container will receive an extra priority class (high, medium, or low)
+   to apply the same left border and priority label styling.
+*/
+.modalContent {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  background-color: var(--color-light-bg);
+  padding: 30px 35px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow-light);
+  transform: scale(0.9);
+  animation: scaleIn var(--transition-default) forwards;
+}
+
+@keyframes scaleIn {
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Modal: if .modalContent has the priority class, apply left border */
+.modalContent.high {
+  border-left: 6px solid var(--priority-high);
+}
+.modalContent.medium {
+  border-left: 6px solid var(--priority-medium);
+}
+.modalContent.low {
+  border-left: 6px solid var(--priority-low);
+}
+
+/* Also style the priority label within the modal */
+.modalContent.high .priority-label {
+  color: var(--priority-high);
+}
+.modalContent.medium .priority-label {
+  color: var(--priority-medium);
+}
+.modalContent.low .priority-label {
+  color: var(--priority-low);
+}
+
+/* Close button styles */
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-light-text);
+  transition: color var(--transition-default);
+}
+
+.closeButton:hover {
+  color: #ff0000;
+}
+
+/* Content within the modal */
+.modalContent h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: var(--color-light-text);
+  margin-bottom: 15px;
+}
+
+.modalContent p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+/* ----- Dark Mode Overrides ----- */
+.dark-mode .taskListContainer {
+  background-color: var(--color-dark-bg);
+  box-shadow: var(--box-shadow-dark);
+}
+
+.dark-mode .taskListContainer h2 {
+  color: var(--color-dark-text);
+}
+
+.dark-mode .taskItem {
+  background-color: var(--color-dark-secondary-bg);
+  border: 1px solid var(--color-dark-border);
+  /* Ensure left border width is maintained */
+  border-left: 6px solid !important;
+  color: var(--color-dark-text);
+}
+
+.dark-mode .taskItem h3 {
+  color: var(--color-dark-text);
+}
+
+.dark-mode .taskItem p {
+  color: #ccc;
+}
+
+.dark-mode .loading {
+  color: #ccc;
+}
+
+.dark-mode .errorMessage {
+  color: var(--color-error-dark);
+}
+
+.dark-mode .successMessage {
+  color: var(--color-success-dark);
+}
+
+/* Dark mode Priority Colors – more specific selectors */
+.dark-mode .taskItem.high {
+  border-left: 6px solid var(--priority-high) !important;
+}
+.dark-mode .taskItem.medium {
+  border-left: 6px solid var(--priority-medium) !important;
+}
+.dark-mode .taskItem.low {
+  border-left: 6px solid var(--priority-low) !important;
+}
+
+/* Also style priority labels in dark mode within list items */
+.dark-mode .taskItem.high .priority-label {
+  color: var(--priority-high);
+}
+.dark-mode .taskItem.medium .priority-label {
+  color: var(--priority-medium);
+}
+.dark-mode .taskItem.low .priority-label {
+  color: var(--priority-low);
+}
+
+/* ----- Modal Styles in Dark Mode ----- */
+.dark-mode .modalContent {
+  background-color: var(--color-dark-secondary-bg);
+  color: #eee;
+  box-shadow: var(--box-shadow-dark);
+}
+
+/* If the modalContent has a priority class, apply left border in dark mode */
+.dark-mode .modalContent.high {
+  border-left: 6px solid var(--priority-high);
+}
+.dark-mode .modalContent.medium {
+  border-left: 6px solid var(--priority-medium);
+}
+.dark-mode .modalContent.low {
+  border-left: 6px solid var(--priority-low);
+}
+
+/* Style the priority label within the modal in dark mode */
+.dark-mode .modalContent.high .priority-label {
+  color: var(--priority-high);
+}
+.dark-mode .modalContent.medium .priority-label {
+  color: var(--priority-medium);
+}
+.dark-mode .modalContent.low .priority-label {
+  color: var(--priority-low);
+}
+
+.dark-mode .closeButton {
+  color: var(--color-dark-text);
+}
+
+.dark-mode .closeButton:hover {
+  color: #ff9b9b;
+}
+
+.dark-mode .modalContent h3 {
+  color: #ccc;
+}
+
+.dark-mode .modalContent p {
+  color: #ccc;
 }

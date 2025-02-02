@@ -1,136 +1,192 @@
+/* File: Sidebar.css */
+
+/* -- LIGHT MODE BASED ON YOUR ORIGINAL CODE -- */
 @media only screen and (min-width: 320px) {
+  .sidebar {
+    position: fixed;
+    top: 60px; /* below header */
+    right: 0;
+    height: calc(100vh - 60px);
+    width: 250px;
+    /* LIGHT MODE gradient background (unchanged) */
+    background: linear-gradient(135deg, #3682ae 0%, #10b981 100%);
+    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: 20px;
+    transform: translateX(100%); /* Slide out by default */
+    transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1);
+    z-index: 998;
+    overflow-y: auto; /* In case the menu grows large */
+  }
 
-.sidebar {
-  position: fixed;
-  top: 60px; /* below header */
-  left: 0;
-  height: calc(100vh - 60px);
-  width: 250px;
-  background-color: var(--primary-color);
-  color: white;
-  padding: 20px;
-  transform: translateX(200%);
-  transition: transform 0.2s ease-in-out;
-  z-index: 998;
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebarOverlay {
+    position: fixed;
+    top: 60px; /* align with header offset if you have a fixed header */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 997; /* just behind .sidebar */
+  }
+
+  .sidebarOverlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .closeIcon {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .closeIcon:hover {
+    transform: scale(1.2);
+  }
+
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px; /* so the close icon doesn't overlap items */
+  }
+
+  .sidebar ul li {
+    margin: 30px 0;
+    width: 200px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: left;
+    transition: background-color 0.3s ease;
+  }
+
+  .sidebar ul li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .sidebar ul li a:hover {
+    color: #f0f0f0;
+  }
+
+  .activeLink {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+  }
+
+  .openMenuButton {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    background-color: #10b981;
+    color: #ffffff;
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 50px; /* Rounded pill button */
+    cursor: pointer;
+    z-index: 999;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  .openMenuButton:hover {
+    background-color: #0a9d68;
+    transform: scale(1.05);
+  }
 }
 
-.sidebar.open {
-  transform: translateX(70%);
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  margin: 30px 0;
-  width: 200px;
-  padding: 10px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-align: left;
-}
-
-.sidebar ul li:hover {
-  background-color: rgba(255, 255, 255, 0.22);
-}
-
-.sidebar ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  transition: color 0.2s ease-in-out;
-}
-
-.sidebar ul li a:hover {
-  color: #f0f0f0;
-}
-
-.openMenuButton {
-  position: fixed;
-  bottom: 55px; /* Move it further down from the header */
-  right: 55px; /* More space between sidebar and button */
-  background-color: #10b981; /* A nice green from Tailwind palette, for example */
-  color: #ffffff;
-  border: none;
-  padding: 10px 16px;
-  font-size: 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  z-index: 999;
-  transition: background-color 0.3s ease;
-}
-.openMenuButton:hover {
-  background-color: #0a9d68; /* Darker shade on hover */
-}
-
-}
-
+/* Extra breakpoints if needed */
 @media only screen and (min-width: 360px) {
-
-.sidebar.open {
-  transform: translateX(60%);
-}
-  
+  .sidebar.open {
+    transform: translateX(0%);
+  }
 }
 
 @media only screen and (min-width: 375px) {
-
-.sidebar.open {
-  transform: translateX(60%);
-}
-
-.sidebar ul li {
-  margin: 25px 0;
-  font-weight: bold;
-  text-align: left;
-}
-    
-}
-
-@media only screen and (min-width: 409px) {
-
-.sidebar.open {
-  transform: translateX(80%);
-}
-
+  .sidebar ul li {
+    margin: 25px 0;
+    font-weight: bold;
+    text-align: left;
+  }
 }
 
 @media only screen and (min-width: 435px) {
-
-.sidebar {
-  width: 65vw;
-}
-    
+  .sidebar {
+    width: 250px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-
-.sidebar {
-  width: 90vw;
-}
-  
+  .sidebar {
+    width: 300px;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
-
-.openMenuButton {
-  bottom: 25px; /* Move it further down from the header */
-  right: 75px; /* More space between sidebar and button */
-}
-    
-}
-
-@media only screen and (min-width: 1024px) {
-
-.openMenuButton {
-  bottom: 75px; /* Move it further down from the header */
-  right: 115px; /* More space between sidebar and button */
+  .openMenuButton {
+    bottom: 25px;
+    right: 25px;
+  }
+  .sidebar ul li {
+    margin: 10px 0;
+  }
 }
 
-.sidebar ul li {
-  margin: 10px 0;
+/* -- DARK MODE OVERRIDES -- */
+.dark-mode .sidebar {
+  /* Black gradient for dark mode (modify as you wish) */
+  /* background: linear-gradient(135deg, #0b0b0b, #2c2c2c); */
+  background: linear-gradient(135deg, #e96074, #382836);
+  box-shadow: 3px 0 8px rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
+.dark-mode .sidebar ul li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .sidebar ul li a {
+  color: #fff;
+}
+.dark-mode .sidebar ul li a:hover {
+  color: #ddd;
+}
+
+.dark-mode .activeLink {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode .closeIcon {
+  color: #f0f0f0;
+}
+
+.dark-mode .sidebarOverlay.active {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dark-mode .openMenuButton {
+  background-color: #2c2c2c;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+.dark-mode .openMenuButton:hover {
+  background-color: #444;
 }
