@@ -26,6 +26,10 @@
   cursor: pointer;
 }
 
+.saveButton:hover {
+  background-color: #0ea472;
+}
+
 .cancelButton {
   background-color: red;
   border: none;
@@ -34,4 +38,8 @@
   color: white;
   margin-left: 20px;
   cursor: pointer;
+}
+
+.cancelButton:hover {
+  background-color: rgb(211, 0, 0);
 }

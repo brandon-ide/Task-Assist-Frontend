@@ -1,11 +1,13 @@
-.deleteTaskContainer {
-    background: white;
-    padding: 25px;
-    max-width: 500px;
-    margin: auto;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  .deleteTaskContainer {
+   display: flex;
+   justify-content: center;
+   margin: 40px auto;
+   padding: 20px;
+   max-width: 600px;
+   border-radius: 10px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   flex-direction: column;
+   align-items: center;
   }
   
   .deleteTaskContainer h2 {
@@ -50,3 +52,44 @@
     margin-bottom: 10px;
     color: var(--secondary-color);
   }
+
+  /* Add this to your DeleteATask.css */
+
+.taskItem {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .taskItem.hovered {
+    background-color: rgb(206, 0, 0);
+    color: white;
+  }
+  
+  .taskItem:hover {
+    cursor: pointer;
+  }
+  
+  .taskItem h3 {
+    margin: 0;
+  }
+  
+  .taskItem p {
+    margin: 5px 0;
+  }
+  
+  .errorMessage, .successMessage {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .errorMessage {
+    color: red;
+  }
+  
+  .successMessage {
+    color: green;
+  }
+  

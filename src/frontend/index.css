@@ -13,6 +13,13 @@
 .dark-mode {
   background-color: #333;
   color: white;
+  transition: 0.2s ease;
+}
+
+.light-mode {
+  background-color: white;
+  color: #333;
+  transition: 0.2s ease;
 }
 
 html,
