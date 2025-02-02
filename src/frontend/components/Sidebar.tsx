@@ -37,11 +37,6 @@ const Sidebar: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link to="/viewdeletedtasks" onClick={toggleSidebar}>
-              View Deleted Tasks
-            </Link>
-          </li>
-          <li>
             <Link to="/viewprivatetasks" onClick={toggleSidebar}>
               View Private Tasks
             </Link>

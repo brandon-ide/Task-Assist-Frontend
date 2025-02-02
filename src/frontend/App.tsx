@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import AddATask from "./pages/AddATask";
 import DeleteATask from "./pages/DeleteATask";
 import DisplayTasks from "./pages/DisplayTasks";
 import UpdateTasks from "./pages/UpdateATask";
-import ViewDeleted from "./pages/ViewDeleted";
 import ViewPrivate from "./pages/ViewPrivate";
 import UserProfile from "./pages/UserProfile";
 import "./App.css";
@@ -34,11 +33,11 @@ const toggleDarkMode = () => {
         <Sidebar />
         <main className="content">
           <Routes>
+            <Route path="/" element={<DisplayTasks />} />
             <Route path="/tasks" element={<DisplayTasks />} />
             <Route path="/addtask" element={<AddATask />} />
             <Route path="/deletetask" element={<DeleteATask />} />
             <Route path="/updatetask" element={<UpdateTasks />} />
-            <Route path="/viewdeletedtasks" element={<ViewDeleted />} />
             <Route path="/viewprivatetasks" element={<ViewPrivate />} />
             <Route path="/userprofile" element={<UserProfile />} />
           </Routes>
