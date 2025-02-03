@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./ViewPrivate";
 import "./DisplayTasks.css";
 
 interface Task {
@@ -21,7 +22,7 @@ const DisplayTasks: React.FC = () => {
     axios
       .get("http://localhost:3000/tasks")
       .then((response) => {
-        setTasks(response.data);
+        setTasks(response.data.filter((task: Task) => task.taskCategory !== "Private"));
         setLoading(false);
       })
       .catch((error) => {
