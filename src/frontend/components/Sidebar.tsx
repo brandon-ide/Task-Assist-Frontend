@@ -41,9 +41,6 @@ const Sidebar: React.FC = () => {
       {/* Off-canvas Sidebar */}
       <nav className={`sidebar ${isOpen ? "open" : ""}`}>
         {/* OPTIONAL: Internal close icon in top-right corner */}
-        <button className="closeIcon" onClick={toggleSidebar}>
-          ✕
-        </button>
 
         <ul>
           {/* Use isActiveLink(...) to highlight whichever route user is on */}

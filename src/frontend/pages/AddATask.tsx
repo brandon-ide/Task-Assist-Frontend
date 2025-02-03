@@ -75,9 +75,9 @@ const AddATask: React.FC = () => {
             onChange={(e) => setTaskCategory(e.target.value)}
             required>
             <option value="">--Select--</option>
-            <option value="pork">Work</option>
-            <option value="personal">Personal</option>
-            <option value="private">Private</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Private">Private</option>
           </select>
 
           <label htmlFor="taskPriority">Task Priority:</label>
