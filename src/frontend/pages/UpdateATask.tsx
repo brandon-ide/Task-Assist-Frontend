@@ -69,7 +69,7 @@ const UpdateTasks: React.FC = () => {
       confirmButtonColor: "#3085d6",
       confirmButtonText: "Yes, update it!",
       cancelButtonText: "Cancel",
-    }).then((result) => {
+    }).then((result: { isConfirmed: any; }) => {
       if (result.isConfirmed) {
         axios
           .put(`http://localhost:3000/tasks/${editingTask._id}`, editingTask)
@@ -165,9 +165,9 @@ const UpdateTasks: React.FC = () => {
                 name="taskCategory"
                 value={editingTask.taskCategory}
                 onChange={handleChange}>
-                <option value="work">Work</option>
-                <option value="personal">Personal</option>
-                <option value="private">Private</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Private">Private</option>
               </select>
             </div>
 
