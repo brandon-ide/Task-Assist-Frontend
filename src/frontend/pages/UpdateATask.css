@@ -44,21 +44,6 @@ input[name="dueDate"]:focus {
   box-shadow: 0 0 0 3px rgba(54, 130, 174, 0.25);
 }
 
-/* Pencil icon */
-#pencil {
-  margin-left: 10px;
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-  border: 1px solid #333;
-  border-radius: 50%;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-#pencil:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
-  transform: scale(1.05);
-}
-
 /* "Save" button */
 .saveButton {
   background: linear-gradient(135deg, #10b981, #0ea472);
@@ -144,6 +129,10 @@ input[name="dueDate"]:focus {
 .taskItem:hover {
   cursor: pointer;
   transform: translateY(-1px);
+  color: #00000086;
+  background: linear-gradient(135deg, #ffffff49, #a4a4a45f);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 /* Priority-based color indicators (light mode) */
@@ -282,13 +271,6 @@ input[name="dueDate"]:focus {
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
 }
 
-.dark-mode #pencil {
-  border: 1px solid #ccc;
-}
-.dark-mode #pencil:hover {
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-}
-
 /* Save Button in dark mode */
 .dark-mode .saveButton {
   background: linear-gradient(135deg, #10b981, #0ea472);
@@ -331,6 +313,7 @@ input[name="dueDate"]:focus {
   border-left-width: 5px; /* Ensure priority indicator width is maintained */
   color: #ddd;
 }
+
 .dark-mode .taskItem h3 {
   color: #fff;
 }

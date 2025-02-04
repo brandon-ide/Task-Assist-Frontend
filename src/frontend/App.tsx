@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import AddATask from "./pages/AddATask";
+import TaskShareForm from "./pages/ShareATask";
 import DeleteATask from "./pages/DeleteATask";
 import DisplayTasks from "./pages/DisplayTasks";
 import UpdateTasks from "./pages/UpdateATask";
@@ -44,6 +45,7 @@ const App: React.FC = () => {
               <Route path="/addtask" element={<AddATask />} />
               <Route path="/deletetask" element={<DeleteATask />} />
               <Route path="/updatetask" element={<UpdateTasks />} />
+              <Route path="/sharetask" element={<TaskShareForm />} />
               <Route path="/viewprivatetasks" element={<ViewPrivateTasks />} />
               <Route path="/userprofile" element={<UserProfile />} />
             </Routes>

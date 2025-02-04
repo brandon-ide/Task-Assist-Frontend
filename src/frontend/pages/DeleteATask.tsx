@@ -75,7 +75,7 @@ const TaskDeleteForm: React.FC = () => {
           {tasks.map((task) => (
             <li
               key={task._id}
-              className={`taskItem ${task.taskPriority.toLowerCase()} ${
+              className={`deleteTaskItem ${task.taskPriority.toLowerCase()} ${
                 hoveredTaskId === task._id ? "hovered" : ""
               }`}
               onMouseEnter={() => setHoveredTaskId(task._id)}
