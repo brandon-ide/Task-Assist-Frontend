@@ -165,6 +165,16 @@ body {
   animation: fadeIn var(--transition-default) forwards;
 }
 
+.shareModalOverlay {
+  position: fixed;
+  text-align: center;
+  font-size: 12px;
+  margin-top: -3em;
+  width: 150px;
+  margin-left: 180px;
+  color: var(--color-success);
+}
+
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -243,6 +253,37 @@ body {
 .modalContent p {
   margin: 0.5rem 0;
   color: #555;
+}
+
+#shareButton {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  background-color: #10b981;
+  color: #ffffff;
+  border: 2px solid white;
+  padding: 12px 18px;
+  font-size: 16px;
+  border-radius: 50px; /* Rounded pill button */
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+#shareButton:hover {
+  background-color: #0a9d68;
+  transform: scale(1.05);
+}
+
+.dark-mode #shareButton {
+  background-color: #2c2c2c;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+.dark-mode #shareButton:hover {
+  background-color: #444;
 }
 
 /* ----- Dark Mode Overrides ----- */

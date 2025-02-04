@@ -136,7 +136,7 @@
 }
 
 /* Individual task items */
-.taskItem {
+.deleteTaskItem {
   padding: 12px 14px;
   margin: 10px 0;
   border: 1px solid var(--color-light-border);
@@ -146,36 +146,35 @@
   transition: background-color 0.3s ease, transform 0.3s, box-shadow 0.3s;
 }
 
-.taskItem:hover {
+.deleteTaskItem:hover {
   cursor: pointer;
   transform: translateY(-1px);
 }
 
 /* Enhanced hovered state */
-.taskItem.hovered {
+.deleteTaskItem.hovered {
   background: linear-gradient(135deg, #f87171, #ef4444);
-  color: #fff;
   box-shadow: 0 5px 12px rgba(239, 68, 68, 0.3);
   transform: translateY(-2px);
 }
 
-.taskItem h3 {
+.deleteTaskItem h3 {
   margin: 0 0 6px;
   font-size: 18px;
   color: var(--color-light-text);
   transition: color 0.3s ease;
 }
 
-.taskItem p {
+.deleteTaskItem p {
   margin: 5px 0;
   color: #555;
   transition: color 0.3s ease;
 }
 
 /* Ensure text in hovered state remains white */
-.taskItem.hovered h3,
-.taskItem.hovered p {
-  color: #fff !important;
+.deleteTaskItem.hovered h3,
+.deleteTaskItem.hovered p {
+  color: #333 !important;
 }
 
 /* Priority-based color indicators (light mode) */
@@ -187,6 +186,16 @@
 }
 .low {
   border-left-color: var(--priority-low);
+}
+
+.deleteTaskItem.high .priority-label {
+  color: var(--priority-high);
+}
+.deleteTaskItem.medium .priority-label {
+  color: var(--priority-medium);
+}
+.deleteTaskItem.low .priority-label {
+  color: var(--priority-low);
 }
 
 /* Wrap the priority text in a span for coloring */
@@ -246,7 +255,7 @@
   color: #f0f0f0;
 }
 
-.dark-mode .taskItem {
+.dark-mode .deleteTaskItem {
   background-color: var(--color-dark-secondary-bg);
   border: 1px solid #555;
   /* Ensure left border width is maintained in dark mode */
@@ -254,15 +263,15 @@
   color: #ddd;
 }
 
-.dark-mode .taskItem:hover {
+.dark-mode .deleteTaskItem:hover {
   transform: translateY(-1px);
 }
 
-.dark-mode .taskItem h3 {
+.dark-mode .deleteTaskItem h3 {
   color: #fff;
 }
 
-.dark-mode .taskItem p {
+.dark-mode .deleteTaskItem p {
   color: #ccc;
 }
 
@@ -280,24 +289,24 @@
 }
 
 /* Dark mode Priority Colors – more specific selectors with !important */
-.dark-mode .taskItem.high {
+.dark-mode .deleteTaskItem.high {
   border-left: 5px solid var(--priority-high) !important;
 }
-.dark-mode .taskItem.medium {
+.dark-mode .deleteTaskItem.medium {
   border-left: 5px solid var(--priority-medium) !important;
 }
-.dark-mode .taskItem.low {
+.dark-mode .deleteTaskItem.low {
   border-left: 5px solid var(--priority-low) !important;
 }
 
 /* Also, style priority labels in dark mode */
-.dark-mode .taskItem.high .priority-label {
+.dark-mode .deleteTaskItem.high .priority-label {
   color: var(--priority-high);
 }
-.dark-mode .taskItem.medium .priority-label {
+.dark-mode .deleteTaskItem.medium .priority-label {
   color: var(--priority-medium);
 }
-.dark-mode .taskItem.low .priority-label {
+.dark-mode .deleteTaskItem.low .priority-label {
   color: var(--priority-low);
 }
 

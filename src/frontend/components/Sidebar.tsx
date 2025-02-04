@@ -17,6 +17,7 @@ import {
   FaTrash,
   FaLock,
   FaUser,
+  FaShareAltSquare
 } from "react-icons/fa";
 import "./Sidebar.css";
 
@@ -54,6 +55,12 @@ const Sidebar: React.FC = () => {
             <Link to="/addtask" onClick={toggleSidebar}>
               <FaPlus style={{ marginRight: "8px" }} />
               Add Task
+            </Link>
+          </li>
+          <li className={isActiveLink("/sharetask")}>
+            <Link to="/sharetask" onClick={toggleSidebar}>
+              <FaShareAltSquare style={{ marginRight: "8px" }} />
+              Share Task
             </Link>
           </li>
           <li className={isActiveLink("/updatetask")}>

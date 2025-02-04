@@ -117,15 +117,6 @@ const UpdateTasks: React.FC = () => {
                 Due:{" "}
                 {task.dueDate && new Date(task.dueDate).toLocaleDateString()}
                 {/* Pencil icon to also open modal */}
-                <img
-                  id="pencil"
-                  src="../src/frontend/assets/pencil.png"
-                  alt="Edit"
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent <li> onClick
-                    openModal(task);
-                  }}
-                />
               </p>
             </li>
           ))}
