@@ -158,7 +158,7 @@ const TaskShareForm: React.FC = () => {
       {/* Modal for sharing the task */}
       {modalVisible && selectedTask && (
         <div className="modal" ref={modalRef}>
-          <div className="modalContent">
+          <div className="shareModalContent">
             <button
               className="closeModalBtn"
               onClick={() => setModalVisible(false)}>

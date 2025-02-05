@@ -44,7 +44,7 @@
   .sidebar ul {
     list-style: none;
     padding: 0;
-    margin-top: 200px;
+    margin-top: 150px;
   }
 
   .sidebar ul li {
@@ -99,17 +99,25 @@
 }
 
 /* Extra breakpoints if needed */
-@media only screen and (min-width: 360px) {
+@media only screen and (max-width: 360px) {
   .sidebar.open {
     transform: translateX(0%);
   }
+
+  .sidebar ul {
+    margin-top: -5px;
+  }
 }
 
-@media only screen and (min-width: 375px) {
+@media only screen and (max-width: 375px) {
   .sidebar ul li {
     margin: 25px 0;
     font-weight: bold;
     text-align: left;
+  }
+
+  .sidebar ul {
+    margin-top: -15px;
   }
 }
 
@@ -132,6 +140,9 @@
   }
   .sidebar ul li {
     margin: 10px 0;
+  }
+  .sidebar ul {
+    margin-top: 40px;
   }
 }
 

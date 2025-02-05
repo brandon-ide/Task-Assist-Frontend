@@ -212,9 +212,10 @@
     align-items: center;
   }
   
-  .modalContent {
+  .shareModalContent {
     text-align: center;
-    background-color: white;
+    color: #333;
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     width: 400px;
@@ -348,7 +349,7 @@
   }
   
   /* -------------------- Modal Styles -------------------- */
-  .dark-mode .modalContent {
+  .dark-mode .shareModalContent {
     background-color: #2a2a2a;
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.08);
     color: #eee;
