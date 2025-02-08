@@ -1,15 +1,7 @@
-// ------------------------------------
-// File: Sidebar.tsx
-// Enhancements:
-// 1. Overlay for dimming main content
-// 2. Close icon inside the sidebar
-// 3. Active link highlighting using useLocation
-// 4. Optional icons from react-icons
-// ------------------------------------
+// src/components/Sidebar.tsx
 
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-// OPTIONAL ICONS (if you want them):
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FaTasks,
   FaPlus,
@@ -17,34 +9,52 @@ import {
   FaTrash,
   FaLock,
   FaUser,
-  FaShareAltSquare
+  FaShareAltSquare,
+  FaSignOutAlt,
 } from "react-icons/fa";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 import "./Sidebar.css";
 
-const Sidebar: React.FC = () => {
+// ADDED: Accept a currentUser prop
+interface SidebarProps {
+  currentUser: any; // or use firebase.auth.User if typed
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // Hide "Open Menu" button if on LandingPage ("/") OR if not logged in
+  // but per your request: "Hide while in landing page, show after login"
+  const showMenuButton = currentUser && location.pathname !== "/";
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
-  // Utility function for highlighting current route
-  const isActiveLink = (path: string) => {
-    return location.pathname === path ? "activeLink" : "";
+  // For highlighting active route
+  const isActiveLink = (path: string) =>
+    location.pathname === path ? "activeLink" : "";
+
+  // Logout
+  const handleLogout = async () => {
+    await signOut(auth);
+    // Optionally close the sidebar, then redirect to "/"
+    setIsOpen(false);
+    navigate("/");
   };
 
   return (
     <>
-      {/* Button to open or close the sidebar */}
-      <button className="openMenuButton" onClick={toggleSidebar}>
-        {isOpen ? "Close Menu" : "Open Menu"}
-      </button>
+      {/* Conditionally render the openMenuButton */}
+      {showMenuButton && (
+        <button className="openMenuButton" onClick={toggleSidebar}>
+          {isOpen ? "Close Menu" : "Open Menu"}
+        </button>
+      )}
 
-      {/* Off-canvas Sidebar */}
       <nav className={`sidebar ${isOpen ? "open" : ""}`}>
-        {/* OPTIONAL: Internal close icon in top-right corner */}
-
         <ul>
-          {/* Use isActiveLink(...) to highlight whichever route user is on */}
           <li className={isActiveLink("/tasks")}>
             <Link to="/tasks" onClick={toggleSidebar}>
               <FaTasks style={{ marginRight: "8px" }} />
@@ -87,10 +97,19 @@ const Sidebar: React.FC = () => {
               User Profile
             </Link>
           </li>
+
+          {/* ADDED: Logout option, only if there's a user */}
+          {currentUser && (
+            <li onClick={handleLogout}>
+              <span style={{ cursor: "pointer" }}>
+                <FaSignOutAlt style={{ marginRight: "8px" }} />
+                Logout
+              </span>
+            </li>
+          )}
         </ul>
       </nav>
 
-      {/* Overlay to dim the screen behind the sidebar */}
       <div
         className={`sidebarOverlay ${isOpen ? "active" : ""}`}
         onClick={toggleSidebar}></div>
