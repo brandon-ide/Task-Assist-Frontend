@@ -1,0 +1,109 @@
+/* src/pages/LandingPage.css */
+/* -------------------------------------------------------------
+   Updated to only show a Google Sign-In button
+   ------------------------------------------------------------- */
+
+   .landingPageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #3682ae, #10b981);
+    color: #fff;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .welcomeBanner {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeSlideIn 0.8s ease forwards;
+  }
+  
+  .welcomeBanner h1 {
+    font-size: 3rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .welcomeBanner p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+  
+  .formContainer {
+    width: 100%;
+    max-width: 450px;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeSlideIn 1.2s ease forwards;
+  }
+  
+  /* A single button for Google sign in */
+  .googleButton {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #429dd1, #3682ae);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 16px auto 0 auto;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+  }
+  .googleButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Error/Success messages */
+  .errorMessage {
+    color: #ffd8d8;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  .successMessage {
+    color: #b2f5ea;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  /* Keyframe for fade + slide-in effect */
+  @keyframes fadeSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  
+  /* DARK MODE OVERRIDES */
+  .dark-mode .landingPageContainer {
+    background: linear-gradient(135deg, #382836, #613138);
+    color: #eee;
+  }
+  
+  .dark-mode .formContainer {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  
+  .dark-mode .googleButton {
+    background: linear-gradient(135deg, #10b981, #0ea472);
+  }
+  
+  .dark-mode .errorMessage {
+    color: #ff9b9b;
+  }
+  .dark-mode .successMessage {
+    color: #90ee90;
+  }
