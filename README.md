@@ -164,10 +164,14 @@ createTask({ title: "New Task", category: "Work", completed: false });
 
 ## 🤝 Contributions
 
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Submit a pull request (PR) with a detailed description.
+<a href="https://github.com/brandon-ide">
+<img src="https://github.com/brandon-ide.png" width="100" alt="Brandon Ide"/>
+</a>
+<a href="https://github.com/mshamshaddin">
+<img src="https://github.com/mshamshaddin.png" width="100" alt="Mohammed Shamshaddin"/>
+</a>
+<a href="https://github.com/DavidDollas">
+<img src="https://github.com/DavidDollas.png" width="100" alt="David Dollas"/>
+</a>
 
 **Ballers Team**
