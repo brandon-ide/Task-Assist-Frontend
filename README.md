@@ -170,10 +170,4 @@ We welcome contributions! Please follow these steps:
 2. Create a feature branch.
 3. Submit a pull request (PR) with a detailed description.
 
-## 📜 License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
----
-
 **Ballers Team**
